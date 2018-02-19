@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 @font-face {
     font-family: 'Glyphter';
     src: url('../fonts/Glyphter.eot');
@@ -37,6 +38,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #104b86;
+    background: #336699;
+    color: #fff;
     #logo {
         margin: .5em;
         width: 30%;
@@ -46,7 +49,7 @@
         align-items: center;
         flex-basis: 20%;
         img {
-            width: 100%;
+            width: 50px;
         }
     }
 }
@@ -60,8 +63,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    background: #000;
+    align-items: flex-end; // background: #000;
 }
 
 .HolyGrail-ads {
@@ -98,7 +100,7 @@ footer {
     display: flex;
     flex-flow: row wrap;
     position: relative;
-    .icon{
+    .icon {
         position: absolute;
         top: calc(50% - 150px/2);
         left: calc(50% - 300px/2);
@@ -112,7 +114,9 @@ footer {
         align-self: flex-end;
         flex-basis: 100%;
         justify-content: center;
-        margin-bottom: 1em;
+        background: #000;
+        padding-bottom: 10px;
+        margin: 0;
         .grp {
             flex-basis: 100%;
             justify-content: center;
@@ -133,6 +137,41 @@ footer {
                 .fullscreen {
                     margin-left: .5em;
                 }
+                .controls a[data-state="subtitles"] {
+                    height: 85%;
+                    text-indent: 0;
+                    font-size: 16px;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    color: #666;
+                    background: #000;
+                    border-radius: 2px;
+                }
+                .subtitles-menu {
+                    display: none;
+                    position: absolute;
+                    bottom: 14.8%;
+                    right: 20px;
+                    background: #666;
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    width: 100px;
+                    padding: 10px;
+                }
+                .subtitles-menu li {
+                    padding: 0;
+                    text-align: center;
+                }
+                .subtitles-menu li button {
+                    border: none;
+                    background: #000;
+                    color: #fff;
+                    cursor: pointer;
+                    width: 90%;
+                    padding: 2px 5px;
+                    border-radius: 2px;
+                }
             }
         }
         .hover {
@@ -145,19 +184,24 @@ footer {
         .progress {
             flex: 10;
             position: relative;
+            overflow: hidden;
             display: flex;
-            flex-basis: 50%;
-            height: 10px;
+            flex-basis: 100%;
+            height: 20px;
             transition: height 0.3s;
             background: bisque;
             cursor: ew-resize;
-            border-radius: 20px;
+            border-radius: 20px;            
+            #progTime{
+                position: absolute;
+                left: calc(50% - 69.36px /2);
+            }
         }
         .progress-filled {
-            width: 50%;
+            // width: 50%;
             background: #ffc600;
             flex: 0;
-            flex-basis: 2%;
+            // flex-basis: 2%;
             border-radius: 20px;
         }
         a {
@@ -197,18 +241,21 @@ footer {
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: flex-start;
+                .grp1{
+                    flex-basis: 30%;
+                }
                 .grp2 {
-                    justify-content: flex-end;
+                    justify-content: center;
                     flex-wrap: nowrap;
-                    width: 55%;
+                    flex-basis: 40%;
                 }
                 .grp3 {
-                    flex-basis: 44%;
+                    flex-basis: 30%;
                     align-items: center;
                     justify-content: flex-end;
                     div::before {
                         color: white;
-                        margin-right: 1em;                        
+                        margin-right: 1em;
                     }
                 }
             }
@@ -222,6 +269,7 @@ footer {
 
 //---------------Playlist---------------
 .playlist {
+    // background: linear-gradient(#e9e7d8,#e9e0a1, #ffc8007a, #ffc800d2);    
     div {
         font-size: 20px;
         display: flex;
