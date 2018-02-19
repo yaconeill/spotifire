@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
+</head>
+
+<body class="HolyGrail">
+    <header class="header">
+        <img src="svg/logotipo.svg" id="logo" />
+        <div id="login">
+            <span>Login</span>
+            <a href="#">
+                <img src="svg/login.svg">
+            </a>
+        </div>
+    </header>
+    <div class="HolyGrail-body">
+        <main class="HolyGrail-content player">
+            <video class="viewer"></video>
+            <div class="player-controls">
+                <div class="grp">
+                    <div class="grp2">
+                        <a class="player-btn svg" data-skip="-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="skip-10" xml:space="preserve" width="26.5mm" height="32mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 2650 3200" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Capa_x0020_1">
+                                    <path id="svg_4" class="fil1 str0" d="M401 210l286 387c86,117 228,308 314,424l286 387c86,117 86,308 0,424l-286 387c-86,117 -228,308 -314,424l-286 387c-86,117 -157,21 -157,-212l0 -2397c0,-234 71,-329 157,-212l0 0 0 0z"
+                                    />
+                                    <path id="svg_8" class="fil1 str0" d="M1517 210l286 387c86,117 218,308 304,424l286 387c86,117 96,308 10,424l-286 387c-86,117 -228,308 -314,424l-286 387c-86,117 -157,21 -157,-212l0 -2397c0,-234 71,-329 157,-212l0 0 0 0z"
+                                    />
+                                </g>
+                            </svg>
+                        </a>
+                        <a class="player-btn toggle svg" title="Toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="26mm" height="32mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 2600 3200" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Capa_x0020_1">
+                                    <g id="_1961144049168">
+                                        <path id="svg_4" class="fil1 str0" d="M435 105l616 410c186,124 490,326 675,450l616 410c186,124 186,326 0,450l-616 410c-186,124 -490,326 -675,450l-616 410c-186,124 -338,22 -338,-225l0 -2540c0,-248 152,-349 338,-225l0 0 0 0z"
+                                        />
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                        <a class="player-btn svg" data-skip="10">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="skip+10" xml:space="preserve" width="26.5mm" height="32mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 2650 3200" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Capa_x0020_1">
+                                    <path id="svg_4" class="fil1 str0" d="M401 210l286 387c86,117 228,308 314,424l286 387c86,117 86,308 0,424l-286 387c-86,117 -228,308 -314,424l-286 387c-86,117 -157,21 -157,-212l0 -2397c0,-234 71,-329 157,-212l0 0 0 0z"
+                                    />
+                                    <path id="svg_8" class="fil1 str0" d="M1517 210l286 387c86,117 218,308 304,424l286 387c86,117 96,308 10,424l-286 387c-86,117 -228,308 -314,424l-286 387c-86,117 -157,21 -157,-212l0 -2397c0,-234 71,-329 157,-212l0 0 0 0z"
+                                    />
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="grp3">
+                        <div id="plus" class="glyphter svg icon-minus volume"></div>
+                        <div id="minus" class="glyphter svg icon-plus volume"></div>
+                        <div id="mute" class="glyphter svg"></div>
+                        <svg id='mSvg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 44" width=125 height=44>
+                            <g>
+                                <polygon class="barFrame" points="0,44 125,44 125,0"></polygon>
+                                <polygon class='barSlider' points="0,44 62.5,44 62,22"></polygon>
+                            </g>
+                            <style>
+                                .barFrame {
+                                    fill: #d1d3d4;
+                                }
+
+                                .barSlider {
+                                    fill: #ffc600;
+                                }
+                            </style>
+                        </svg>
+                        <br/>
+                        <a class="fullscreen svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="31.5mm" height="31mm" version="1.1" style="shape-rendering:geometricPrecision; 
+                                text-rendering:geometricPrecision; image-rendering:optimizeQuality; 
+                                fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 3150 3100" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Capa_x0020_1">
+                                    <rect class="fil0 str0" x="91" y="126" width="2974" height="2858" rx="400" ry="400" />
+                                    <path class="fil1 zoom1 str1" d="M2252 1133l288 -288 111 111 66 -511 -511 66 111 111 -288 288 222 222zm144 -144m200 -89m89 -200m-222 -222m-200 89m-89 200m-33 255">
+                                    </path>
+                                    <path class="fil1 zoom2 str1" d="M850 2011l-288 288 -111 -111 -66 511 511 -66 -111 -111 288 -288 -222 -222zm-144 144m-200 89m-89 200m222 222m200 -89m89 -200m33 -255">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-filled"></div>
+                    </div>
+                </div>
+
+                <!-- Play and pause buttons -->
+                <!-- <button class="material-icons play">play_arrow</button>
+                <button class="material-icons pause">pause</button> -->
+
+                <!--   Playback Duration -->
+                <!-- <div class="playback-duration">
+                    <span class="progress"></span>
+                    <span>/</span>
+                    <span class="duration"></span>
+                </div> -->
+                <!--   Progress bar -->
+                <!-- <div class="progress-bar-parent flex">
+                    <div class="progress-bar-background">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div> -->
+                <!--   Volume buttons -->
+                <!-- <button class="material-icons mute">volume_off</button>
+                <button class="material-icons unmute">volume_up</button> -->
+                <!--   <button class="material-icons fullscreen">fullscreen</button> -->
+                <!--   End video controls -->
+            </div>
+        </main>
+        <!-- <nav class="HolyGrail-nav">…</nav> -->
+        <aside class="HolyGrail-ads playlist"></aside>
+    </div>
+    <footer>
+        <div id="license">
+            <span>Created By Aymediacoán MQ ||&nbsp;</span>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Licencia de Creative Commons" style="border-width:0" src="svg/by-nc-nd.svg" />
+            </a>
+            <br />
+            <span>Esta obra está bajo una
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">licencia de Creative Commons Reconocimiento-NoComercial-SinObraDerivada 4.0 Internacional.</a>
+            </span>
+        </div>
+    </footer>
+    <script src="js/media.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

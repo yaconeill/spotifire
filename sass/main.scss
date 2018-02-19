@@ -1,0 +1,378 @@
+* {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Glyphter';
+    src: url('../fonts/Glyphter.eot');
+    src: url('../fonts/Glyphter.eot?#iefix') format('embedded-opentype'), url('../fonts/Glyphter.woff') format('woff'), url('../fonts/Glyphter.ttf') format('truetype'), url('../fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class*='icon-']:before {
+    display: inline-block;
+    font-family: 'Glyphter';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphter {
+    font-family: glyphter !important;
+    font-size: 1.5em;
+}
+
+.HolyGrail {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    background: #e9e7d8;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #104b86;
+    #logo {
+        margin: .5em;
+        width: 30%;
+    }
+    #login {
+        display: flex;
+        align-items: center;
+        flex-basis: 20%;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.HolyGrail-body {
+    display: flex;
+    flex: 1;
+}
+
+.HolyGrail-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: #000;
+}
+
+.HolyGrail-ads {
+    flex: 0 0 100%;
+    border-left: 2px solid #104b86;
+}
+
+footer {
+    background: #336699;
+    border-top: 2px solid #104b86;
+    display: flex;
+    color: black;
+    font-size: .8rem;
+    height: 10rem;
+    #license {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        a {
+            order: 1;
+            margin-right: .5em;
+        }
+    }
+}
+
+.HolyGrail,
+.HolyGrail-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.player {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    .icon{
+        position: absolute;
+        top: calc(50% - 150px/2);
+        left: calc(50% - 300px/2);
+        opacity: 0.4;
+    }
+    .viewer {
+        width: 100%;
+    }
+    .player-controls {
+        display: flex;
+        align-self: flex-end;
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 1em;
+        .grp {
+            flex-basis: 100%;
+            justify-content: center;
+            .grp2 {
+                display: flex;
+                justify-content: center;
+                a {
+                    margin: 0 15px;
+                }
+                #skip-10 {
+                    transform: scale(-1);
+                }
+            }
+            .grp3 {
+                display: flex;
+                align-self: flex-end;
+                justify-content: center;
+                .fullscreen {
+                    margin-left: .5em;
+                }
+            }
+        }
+        .hover {
+            width: 40px;
+            height: 40px;
+            path {
+                fill: #ffc600;
+            }
+        }
+        .progress {
+            flex: 10;
+            position: relative;
+            display: flex;
+            flex-basis: 50%;
+            height: 10px;
+            transition: height 0.3s;
+            background: bisque;
+            cursor: ew-resize;
+            border-radius: 20px;
+        }
+        .progress-filled {
+            width: 50%;
+            background: #ffc600;
+            flex: 0;
+            flex-basis: 2%;
+            border-radius: 20px;
+        }
+        a {
+            color: azure;
+            font-size: 50px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        #logo {
+            width: 10%;
+        }
+        #login {
+            flex-basis: 6%;
+            margin-right: .5em;
+        }
+    }
+    .HolyGrail-body {
+        flex-direction: row;
+        flex: 1;
+    }
+    .HolyGrail-content {
+        flex: 1;
+    }
+    .HolyGrail-ads {
+        flex: 0 0 25%;
+    }
+    .player {
+        .viewer {
+            max-width: 900px;
+        }
+        .player-controls {
+            .grp {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                .grp2 {
+                    justify-content: flex-end;
+                    flex-wrap: nowrap;
+                    width: 55%;
+                }
+                .grp3 {
+                    flex-basis: 44%;
+                    align-items: center;
+                    justify-content: flex-end;
+                    div::before {
+                        color: white;
+                        margin-right: 1em;                        
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        height: 4rem;
+        justify-content: center;
+    }
+}
+
+//---------------Playlist---------------
+.playlist {
+    div {
+        font-size: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 1 100%;
+        align-items: center;
+        justify-content: space-between;
+        transition: all .5s;
+        height: 100px;
+        p {
+            order: 1;
+            flex-basis: 70%;
+            margin: 0px;
+            padding: 10px;
+            color: black;
+            font-weight: bold;
+        }
+        .icon-v:before,
+        .icon-a:before {
+            border-radius: 100%;
+            padding: 10px;
+            margin-left: .5em;
+            border: 2px solid #000000;
+            background: #1c4166;
+            color: white;
+        }
+        .nowPlaying {
+            order: 3;
+            width: 20px;
+            margin-right: 1em;
+            svg {
+                transform: rotate(180deg);
+                width: 100%;
+            }
+        }
+        .fil0 {
+            animation: nowPlaying .5s infinite;
+        }
+        @keyframes nowPlaying {
+            from {
+                transform: scaleY(1.5);
+            }
+            to {
+                transform: scaleY(0.5);
+            }
+        }
+        p~p {
+            text-indent: 1em;
+        }
+        &:not(.selected):hover {
+            cursor: pointer;
+            background-color: rgba(51, 102, 153, 0.467);
+            p {
+                color: white;
+            }
+        }
+    }
+    .selected {
+        transform: scale(0.9) translateX(-5%);
+        background: #336699;
+        p {
+            color: white;
+        }
+        span::before {
+            background: #ffc600;
+            color: #000;
+        }
+    }
+}
+
+//-------------SVG--------------
+.icon-a:before {
+    content: '\0047';
+}
+
+.icon-v:before {
+    content: '\0044';
+}
+
+.icon-muted:before {
+    content: '\0041';
+    transform: scaleX(-1);
+}
+
+.icon-unmuted:before {
+    content: '\0043';
+}
+
+.icon-plus:before {
+    content: '\0046';
+}
+
+.icon-minus:before {
+    content: '\0045';
+}
+
+.player-controls {
+    .svg svg {
+        width: 30px;
+        height: 30px;
+        transition: 0.5s all !important;
+        path {
+            transition: 0.5s all !important;
+        }
+    }
+}
+
+.grp2 {
+    .str0 {
+        stroke: #000;
+        stroke-width: 100
+    }
+    .str1 {
+        stroke: #000;
+        stroke-width: 20
+    }
+    .fil0 {
+        fill: none
+    }
+    .fil1 {
+        fill: #FEFEFE;
+        fill-rule: nonzero
+    }
+}
+
+.grp3 {
+    .str0 {
+        stroke: #FEFEFE;
+        stroke-width: 39.69
+    }
+    .fil0 {
+        fill: none
+    }
+    .fil1 {
+        fill: #FEFEFE
+    }
+}
+
+//---------------------Controls-----------
+input[type=range] {
+    -webkit-appearance: none !important;
+    background: #000;
+    border: #666 1px solid;
+    height: 4px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: #fff;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    cursor: pointer;
+}

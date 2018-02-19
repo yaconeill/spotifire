@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2017 -->
+<svg id='mSvg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285 100" width="285" height="100">
+  <defs>
+    <style type="text/css">
+     <![CDATA[
+      .barFrame {
+          fill: #d1d3d4;
+      }
+
+      .barSlider {
+          fill: #69bd45;
+      }
+      ]]>
+  </style>
+  </defs>
+  <g>
+      <polygon class="barFrame" points="0,100 285,100 285,0"></polygon>
+      <polygon class='barSlider' points="0,100 143,100 143,50"></polygon>
+  </g>
+</svg>
