@@ -3,6 +3,7 @@ $(document).ready(function () {
     var $playlist = $('.playlist');
     var mediaData = data[0];
     var allItems = [];
+    setVolumeSVG(100);
     const $video = $("video");
     const player = document.querySelector('.player');
     const viewer = player.querySelector('.viewer');
@@ -11,7 +12,6 @@ $(document).ready(function () {
     const toggle = player.querySelector('.toggle');
     const skipButtons = player.querySelectorAll('[data-skip]');
     const ranges = player.querySelectorAll('.player-slider');
-    const subtitles = document.getElementById('subtitles');
     const curTimeTxt = document.getElementById('curTimeTxt');
     const durTimeTxt = document.getElementById('durTimeTxt');
     const volumeBtn = player.querySelectorAll('.volume');
@@ -33,6 +33,7 @@ $(document).ready(function () {
             <rect class="fil0 str0" x="2685.43" y="224.87" width="502.71" height="2963.33"/>
             <rect class="fil0 str0" x="3479.18" y="224.87" width="502.71" height="2116.66"/>
             </g></svg>`;
+    const closedCaption = `<a id="subtitles" data-state="subtitles"><svg class="icon"><use xlink:href="#video"></use></svg></a>`;
     const speaker = `<svg class="icon"><use xlink:href="#multimedia"></use></svg>`;
 
     let i = 0;
@@ -75,22 +76,21 @@ $(document).ready(function () {
         var WindowWidth = $(window).width();
         let item = $(this).attr('id').split('-');
         $video.children().remove();
+        $('.grp3').children('#subtitles').remove();
+
         if (item[0] === 'v') {
             if (allItems[item[1]].author === 'NASA-Imagery') {
-                if (WindowWidth < 768) {
-                    $video.append(`<source src="${allItems[item[1]].sd}.mp4" 
-                    type="video/mp4" media="screen and (max-width:768px)">`);
-                } else {
-                    $video.append(`<source src="${allItems[item[1]].hd}.webm" type="video/webm"
-                    media="screen and (min-width:800px)">`);
-                    $video.append(`<source src="${allItems[item[1]].hd}.ogv" type="video/ogg"
-                    media="screen and (min-width:800px)">`);
-                }
+                $video.append(`<source src="${allItems[item[1]].hd}.webm" type="video/webm">`);
+                $video.append(`<source src="${allItems[item[1]].hd}.ogv" type="video/ogg">`);
             }
-            if (allItems[item[1]].author === 'Aymediacoán MQ')
+            if (allItems[item[1]].author === 'Aymediacoán MQ') {
                 $video.append(`<track kind="captions" src="${allItems[item[1]].subs}" srclang="es-es" label="Spanish" />`);
-            $video.append(`<source src="${allItems[item[1]].hd}.mp4" type="video/mp4"
-                media="screen and (min-width:800px)">`);
+                $('.grp3').prepend(closedCaption);
+            }
+            if (WindowWidth < 768) {
+                $video.append(`<source src="${allItems[item[1]].sd}.mp4" type="video/mp4">`);
+            }
+            $video.append(`<source src="${allItems[item[1]].hd}.mp4" type="video/mp4">`);
             $video.attr('poster', '');
             $video
         } else {
@@ -99,66 +99,32 @@ $(document).ready(function () {
             $video.attr('poster', allItems[item[1]].poster);
         }
         i = item[1];
+        for (let i = 0; i < viewer.textTracks.length; i++) {
+            let $icon = $('#subtitles').find('.icon');
+            viewer.textTracks[i].mode = 'hidden';
+            $icon.addClass('inverted');
+        }
 
-        // // Subs hidden by default
-        // for (let i = 0; i < video.textTracks.length; i++) {
-        //     video.textTracks[i].mode = 'hidden';
-        // }
+        let subtitles = document.getElementById('subtitles');
+        if (subtitles !== null)
+            subtitles.addEventListener('click', () => {
+                let $icon = $('#subtitles').find('.icon');
+                for (let i = 0; i < viewer.textTracks.length; i++) {
+                    if (viewer.textTracks[i].mode === 'hidden') {
+                        viewer.textTracks[i].mode = 'showing';
+                        $('#video').find('rect').hide();
+                        $icon.removeClass('inverted');
+                    } else {
+                        viewer.textTracks[i].mode = 'hidden';
+                        $('#video').find('rect').show();
+                        $icon.addClass('inverted');
+                    }
+                }
+            }, false);
+
         viewer.load();
         viewer.play();
     });
-
-    // var subtitlesMenu;
-    // var captionMenuButtons = [];
-    // var createMenuItem = function (id, lang, label) {
-    //     var listItem = document.createElement('li');
-    //     var button = listItem.appendChild(document.createElement('button'));
-    //     button.setAttribute('id', id);
-    //     button.className = 'subtitles-button';
-    //     if (lang.length > 0) button.setAttribute('lang', lang);
-    //     button.value = label;
-    //     button.setAttribute('data-state', 'inactive');
-    //     button.appendChild(document.createTextNode(label));
-    //     button.addEventListener('click', function (e) {
-    //         // Set all buttons to inactive
-    //         subtitleMenuButtons.map(function (v, i, a) {
-    //             subtitleMenuButtons[i].setAttribute('data-state', 'inactive');
-    //         });
-    //         // Find the language to activate
-    //         var lang = this.getAttribute('lang');
-    //         for (let i = 0; i < viewer.textTracks.length; i++) {
-    //             // For the 'subtitles-off' button, the first condition will never match so all will subtitles be turned off
-    //             if (viewer.textTracks[i].language == lang) {
-    //                 viewer.textTracks[i].mode = 'showing';
-    //                 this.setAttribute('data-state', 'active');
-    //             }
-    //             else {
-    //                 viewer.textTracks[i].mode = 'hidden';
-    //             }
-    //         }
-    //         subtitlesMenu.style.display = 'none';
-    //     });
-    //     subtitleMenuButtons.push(button);
-    //     return listItem;
-    // }
-
-    // if (viewer.textTracks) {
-    //     var df = document.createDocumentFragment();
-    //     var subtitlesMenu = df.appendChild(document.createElement('ul'));
-    //     subtitlesMenu.className = 'subtitles-menu';
-    //     subtitlesMenu.appendChild(createMenuItem('subtitles-off', '', 'Off'));
-    //     for (let i = 0; i < viewer.textTracks.length; i++) {
-    //         subtitlesMenu.appendChild(createMenuItem('subtitles-' + viewer.textTracks[i].language,
-    //             viewer.textTracks[i].language, viewer.textTracks[i].label));
-    //     }
-    //     videoContainer.appendChild(subtitlesMenu);
-    // }
-
-    // subtitles.addEventListener('click', function (e) {
-    //     if (subtitlesMenu) {
-    //         subtitlesMenu.style.display = (subtitlesMenu.style.display == 'block' ? 'none' : 'block');
-    //     }
-    // });
 
     init();
     function init() {
@@ -224,16 +190,16 @@ $(document).ready(function () {
         var cursecs = Math.floor(viewer.currentTime - curmins * 60);
         var durmins = Math.floor(viewer.duration / 60);
         var dursecs = Math.floor(viewer.duration - durmins * 60);
-        if (cursecs < 10){
+        if (cursecs < 10) {
             cursecs = '0' + cursecs;
         }
-        if (dursecs < 10){
+        if (dursecs < 10) {
             dursecs = '0' + dursecs;
         }
-        curTimeTxt.innerHTML = curmins + ':'+cursecs;
-        durTimeTxt.innerHTML = durmins + ':'+dursecs;
+        curTimeTxt.innerHTML = curmins + ':' + cursecs;
+        durTimeTxt.innerHTML = durmins + ':' + dursecs;
     }
-    
+
 
     function scrub(e) {
         const scrubTime = (e.offsetX / progress.offsetWidth) * viewer.duration;
@@ -269,7 +235,7 @@ $(document).ready(function () {
     volume.addEventListener('mousewheel', scrubVol, false);
 
     function scrubVol(evt) {
-        let vol = 50;
+        let vol = 100;
         if (evt.type !== 'mousewheel')
             vol = (evt.offsetX * 100) / 125;
         else
@@ -277,12 +243,17 @@ $(document).ready(function () {
                 if ((viewer.volume * 100) < 100) {
                     vol = (viewer.volume * 100) + 1;
                 }
+                else
+                    vol = 100;
             } else {
                 if ((viewer.volume * 100) > 0) {
                     vol = (viewer.volume * 100) - 1;
+                } else {
+                    vol = 0;
                 }
             }
-        viewer.volume = vol / 100;
+        // viewer.volume = ;
+        viewer.volume = Math.round((vol / 100) * 100 + Number.EPSILON) / 100;
         setVolumeSVG(vol);
 
         if ($video.prop('muted')) {

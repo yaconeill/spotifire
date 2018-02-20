@@ -138,7 +138,7 @@ footer {
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   position: relative; }
-  .player .icon {
+  .player > .icon {
     position: absolute;
     top: calc(50% - 150px/2);
     left: calc(50% - 300px/2);
@@ -186,7 +186,19 @@ footer {
         align-self: flex-end;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
-        justify-content: center; }
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
+        .player .player-controls .grp .grp3 #subtitles {
+          width: 40px;
+          height: 40px;
+          margin-right: .1em; }
+          .player .player-controls .grp .grp3 #subtitles .icon {
+            width: 100%;
+            height: 100%; }
+        .player .player-controls .grp .grp3 div::before {
+          color: white; }
         .player .player-controls .grp .grp3 .fullscreen {
           margin-left: .5em; }
         .player .player-controls .grp .grp3 .controls a[data-state="subtitles"] {
@@ -257,7 +269,20 @@ footer {
       font-size: 50px;
       cursor: pointer; }
 
+.inverted {
+  -webkit-filter: invert(100%);
+  filter: invert(100%); }
+
 @media (min-width: 768px) {
+  .viewer {
+    width: 70%;
+    max-width: 800px; }
+  .grp3 {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; } }
+
+@media (min-width: 1124px) {
   .header #logo {
     width: 10%; }
   .header #login {
@@ -310,12 +335,9 @@ footer {
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: end;
-      -ms-flex-pack: end;
-      justify-content: flex-end; }
-      .player .player-controls .grp .grp3 div::before {
-        color: white;
-        margin-right: 1em; }
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
   footer {
     height: 4rem;
     -webkit-box-pack: center;
