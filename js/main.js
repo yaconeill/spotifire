@@ -34,7 +34,7 @@ $(document).ready(function () {
             <rect class="fil0 str0" x="3479.18" y="224.87" width="502.71" height="2116.66"/>
             </g></svg>`;
     const closedCaption = `<a id="subtitles" data-state="subtitles"><svg class="icon"><use xlink:href="#video"></use></svg></a>`;
-    const speaker = `<svg class="icon"><use xlink:href="#multimedia"></use></svg>`;
+    const speaker = `<div id="speakerSvg"><svg class="icon"><use xlink:href="#multimedia"></use></svg></div>`;
 
     let i = 0;
     for (let i = 0; i < 6; i++) {
@@ -62,7 +62,7 @@ $(document).ready(function () {
                 $(e).removeClass('selected');
             }
             $(e).children('span.nowPlaying').children().remove();
-            $video.parent().find('.icon').remove();
+            $video.parent().find('#speakerSvg').remove();
         });
 
         if ($(this).attr('id').substr(0, 1) === 'a') {
